@@ -1,8 +1,11 @@
+version: '3'
 services:
-  web:
-    build: . 
+  node:
+    env_file:
+      - .env
+    build: .
     ports:
-      - "8000:8000"
+      - '8080:8000'
     volumes:
       - .:/opt/auth
       - /opt/auth/node_modules
