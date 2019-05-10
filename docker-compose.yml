@@ -6,8 +6,6 @@ services:
     build: .
     ports:
       - '8080:8000'
-    ports:
-      - "5002:5002"
     volumes:
       - .:/opt/auth
       - /opt/auth/node_modules
