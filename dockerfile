@@ -8,4 +8,4 @@ RUN npm install nodemon -g --quiet
 
 EXPOSE 8000
 
-CMD nodemon index.js
+CMD npm start

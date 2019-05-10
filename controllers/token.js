@@ -17,7 +17,10 @@ function login (req, res) {
 
         if (results.length > 0) 
         {
-            let token = jwt.sign({username: clientId},
+            let token = jwt.sign(
+              {
+                username: clientId
+              },
               config.secret,
               { 
                   expiresIn: '1h' // expires in 1 hours
