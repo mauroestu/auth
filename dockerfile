@@ -1,11 +1,10 @@
-FROM sa/general
+FROM node
 
 LABEL maintainer="mauroestu18@gmail.com"
 LABEL version="1.0"
 
-RUN mkdir -p /opt/auth
 WORKDIR /opt/auth
-
+add . /opt/auth
 COPY package.json
 RUN npm install --quiet
 RUN npm install nodemon -g --quiet
