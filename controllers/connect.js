@@ -6,7 +6,7 @@ var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     password : '',
-    database : 'origen2_201403831'
+    database : 'auth'
 });
 
 module.exports = {

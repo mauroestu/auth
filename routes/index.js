@@ -3,11 +3,14 @@
 const express = require('express');
 
 /*************Instancias controladores administrador****************/
-const user = require('../controllers/users/user');
+const token = require('../controllers/token');
+const check = require('../controllers/mdl');
 /*******************************************************************/
 
 const api = express.Router();
 
-api.get('/users',user.listUsers);
+api.post('/getToken',token.login);
+api.get('/validateToken',check.checkToken,token.index);
+api.get('/',token.index);
 
 module.exports = api;
