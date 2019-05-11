@@ -1,7 +1,6 @@
 'use strict'
 
 let jwt = require('jsonwebtoken');
-const config = require('../config');
 
 let checkToken = (req, res, next) => {
   let token = req.headers['x-access-token'] || req.headers['authorization']; // Express headers are auto converted to lowercase
@@ -11,15 +10,33 @@ let checkToken = (req, res, next) => {
   }
 
   if (token) {
-    jwt.verify(token, config.secret, (err, decoded) => {
+    jwt.verify(token, 'SoftwareAvanzado123', (err, decoded) => {
       if (err) {
         return res.jsonp({
           success: false,
           message: 'Token is not valid'
         });
       } else {
+
         req.decoded = decoded;
-        next();
+        var scope = decoded.roles;
+        var scopes = scope.split(',');
+        var x =0;
+        scopes.forEach(function (element) {
+          if(req.header('scope')==element)
+          {
+            next();
+            return;
+          }
+          x++;
+          if(x==scopes.length)
+          {
+            return res.jsonp({
+              success: false,
+              message: 'Token is not valid'
+            });
+          }
+        });
       }
     });
   } else {

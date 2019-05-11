@@ -19,7 +19,8 @@ function login (req, res) {
         {
             let token = jwt.sign(
               {
-                username: clientId
+                username: clientId,
+                roles:results[0].funciones
               },
               config.secret,
               { 
