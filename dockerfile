@@ -6,6 +6,6 @@ RUN npm install --quiet
 RUN npm install nodemon -g --quiet
 
 
-EXPOSE 8000
+EXPOSE 8086
 
 CMD npm start
